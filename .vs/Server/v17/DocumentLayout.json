@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\SallyRAT\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B066D70B-6669-4D77-AC0B-8731B021A1FB}|clientSallyRAT\\clientSallyRAT.csproj|d:\\sallyrat\\clientsallyrat\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B066D70B-6669-4D77-AC0B-8731B021A1FB}|clientSallyRAT\\clientSallyRAT.csproj|solutionrelative:clientsallyrat\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Client.cs",
+              "DocumentMoniker": "D:\\SallyRAT\\clientSallyRAT\\Client.cs",
+              "RelativeDocumentMoniker": "clientSallyRAT\\Client.cs",
+              "ToolTip": "D:\\SallyRAT\\clientSallyRAT\\Client.cs",
+              "RelativeToolTip": "clientSallyRAT\\Client.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-20T19:11:13.276Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

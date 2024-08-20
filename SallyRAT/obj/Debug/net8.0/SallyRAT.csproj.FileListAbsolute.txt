@@ -1,0 +1,14 @@
+C:\Users\ellio\source\repos\Server\SallyRAT\bin\Debug\net8.0\SallyRAT.exe
+C:\Users\ellio\source\repos\Server\SallyRAT\bin\Debug\net8.0\SallyRAT.deps.json
+C:\Users\ellio\source\repos\Server\SallyRAT\bin\Debug\net8.0\SallyRAT.runtimeconfig.json
+C:\Users\ellio\source\repos\Server\SallyRAT\bin\Debug\net8.0\SallyRAT.dll
+C:\Users\ellio\source\repos\Server\SallyRAT\bin\Debug\net8.0\SallyRAT.pdb
+C:\Users\ellio\source\repos\Server\SallyRAT\obj\Debug\net8.0\SallyRAT.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ellio\source\repos\Server\SallyRAT\obj\Debug\net8.0\SallyRAT.AssemblyInfoInputs.cache
+C:\Users\ellio\source\repos\Server\SallyRAT\obj\Debug\net8.0\SallyRAT.AssemblyInfo.cs
+C:\Users\ellio\source\repos\Server\SallyRAT\obj\Debug\net8.0\SallyRAT.csproj.CoreCompileInputs.cache
+C:\Users\ellio\source\repos\Server\SallyRAT\obj\Debug\net8.0\SallyRAT.dll
+C:\Users\ellio\source\repos\Server\SallyRAT\obj\Debug\net8.0\refint\SallyRAT.dll
+C:\Users\ellio\source\repos\Server\SallyRAT\obj\Debug\net8.0\SallyRAT.pdb
+C:\Users\ellio\source\repos\Server\SallyRAT\obj\Debug\net8.0\SallyRAT.genruntimeconfig.cache
+C:\Users\ellio\source\repos\Server\SallyRAT\obj\Debug\net8.0\ref\SallyRAT.dll
