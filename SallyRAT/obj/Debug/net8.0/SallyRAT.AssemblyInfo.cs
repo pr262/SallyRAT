@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SallyRAT")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+aecdfcae32c1a1d66807ab42b625f496b2e09210")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0a4645c4888f1dacf2a213f0fefff02b0bae27da")]
 [assembly: System.Reflection.AssemblyProductAttribute("SallyRAT")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SallyRAT")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
